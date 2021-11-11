@@ -21,7 +21,8 @@ addLayer("T255", {
         return new Decimal(1)
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return true}
+    layerShown(){return true},
+	doReset(){layer.DataReset(this.layer)}
 });
 addLayer("T254", {
     name: "Tier 1", // This is optional, only used in a few places, If absent it just uses the layer id.
@@ -46,7 +47,8 @@ addLayer("T254", {
         return new Decimal(1)
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return true}
+    layerShown(){return true},
+	doReset(){layer.DataReset(this.layer)}
 });
 addLayer("Scraps", {
     name: "Scraps", // This is optional, only used in a few places, If absent it just uses the layer id.
@@ -80,5 +82,9 @@ addLayer("Scraps", {
     hotkeys: [
         {key: "s", description: "S: Dismantle the tree and get your scraps", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+	//doReset(){
+	//	var i;
+	//	for (i=255;i>253;i--){layerDataReset("T"+i)}
+	//	},
     layerShown(){return true}
 })

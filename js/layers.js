@@ -53,7 +53,7 @@ addLayer("T255", {
         {key: "s", description: "S: Dismantle the tree and get your scraps", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}
-})
+});
 
 addLayer("Scraps", {
     name: "Scraps", // This is optional, only used in a few places, If absent it just uses the layer id.

@@ -1,5 +1,5 @@
 let modInfo = {
-	name: "The Loot Tree",
+	name: "The Tree of Loot",
 	id: "lootingIII",
 	author: "Dragonmemo",
 	pointsName: "power",

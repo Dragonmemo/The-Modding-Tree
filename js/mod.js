@@ -13,11 +13,13 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0",
-	name: "learning how to use TMT",
+	num: "0.1",
+	name: "Starts to be playable",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+	<h3>v0.1</h3><br>
+		- A whole lot of layers !<br><br>
 	<h3>v0.0</h3><br>
 		- started fork.`
 

@@ -34,7 +34,7 @@ addLayer("T255", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    color: "#FFFFFF",
+    color: "#FEFEFE",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "powererer", // Name of prestige currency
     baseResource: "powerer", // Name of resource prestige is based on
@@ -63,7 +63,7 @@ addLayer("Scraps", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    color: "#FFFFFF",
+    color: "#FCAC40",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "scraps", // Name of prestige currency
     baseResource: "power", // Name of resource prestige is based on

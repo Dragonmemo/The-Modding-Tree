@@ -22,7 +22,7 @@ addLayer("T255", {
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true},
-	doReset(){layer.DataReset(this.layer)}
+	//doReset(){layer.DataReset(this.layer)}
 });
 addLayer("T254", {
     name: "Tier 1", // This is optional, only used in a few places, If absent it just uses the layer id.
@@ -48,7 +48,7 @@ addLayer("T254", {
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true},
-	doReset(){layer.DataReset(this.layer)}
+	//doReset(){layer.DataReset(this.layer)}
 });
 addLayer("Scraps", {
     name: "Scraps", // This is optional, only used in a few places, If absent it just uses the layer id.
@@ -88,3 +88,30 @@ addLayer("Scraps", {
 	//	},
     layerShown(){return true}
 })
+
+function createUpgrades(layerInfo, id){
+	let upgRand = random();
+	let et = (r==1?"NONE":layersForEffects[r-1][Math.floor(1-upgRand)]);
+	layerInfo.upgrades[id] = {
+		unlocked() { return player[this.layer].unlocked },
+		et: et,
+		layer: layerInfo.name,
+		title: layerInfo.name+String(id),
+		description() { return ((et!="NONE"?tmp[et].type=="static":false)?("Divide "+(et=="NONE"?"point":(et+" point"))+" requirement"):("Multiply "+(et=="NONE"?"point":(et+" point"))+" gain"))+" based on "+(sourceName=="NONE"?"points":(sourceName+" points"))},
+		cost: new Decimal(1eid),
+		effect() { 
+			let exp;
+			if (this.et == "NONE") exp = new Decimal(1);
+			else exp = tmp[this.et].exponent;
+			let amt;
+			if (this.sourceName == "NONE") amt = player.points;
+			else amt = player[this.sourceName].points;
+			eff = new Decimal(amt||0).max(0.5).plus(1)
+			if (this.sourceName!="NONE" ? tmp[this.sourceName].type=="static" : false) eff = Decimal.pow(tmp[this.sourceName].base, eff).pow(tmp[this.sourceName].exponent).pow(exp).pow(RNG_DATA.rowLayerTotalMultExps[tmp[this.layer].row].times(this.iuf))
+			else eff = eff.root((this.sourceName=="NONE")?1:tmp[this.sourceName].exponent).pow(exp).pow(RNG_DATA.rowLayerTotalMultExps[tmp[this.layer].row].times(this.iuf)) 
+			return eff;
+		},
+		effectDisplay() { return format(tmp[this.layer].upgrades[this.id].effect)+"x" },
+	}
+	uLeft = Math.max(uLeft-internalUpgFactor, 0);
+}
